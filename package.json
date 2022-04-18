@@ -4,8 +4,12 @@
   "description": "A simple base for demonstrating the [Netlify](https://netlify.com?utm_source=github&utm_medium=proxy-demo-pnh&utm_campaign=devex) Proxy Service and [Redirects API](https://docs.netlify.com/routing/redirects/?utm_source=github&utm_medium=proxy-demo-pnh&utm_campaign=devex)",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "watch:sass": "sass --watch src/sass:public/css",
+    "build:sass": "sass src.sass:public/css",
+    "watch:eleventy": "eleventy --serve",
+    "build:eleventy": "eleventy",
+    "start": "npm-run-all build:sass --parellel watch:*",
+    "build": "npm-run-all build:*"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   },
   "homepage": "https://github.com/rookie-academy/rookie-academy-proxy#readme",
   "dependencies": {
-    "@11ty/eleventy": "^1.0.0"
+    "@11ty/eleventy": "^1.0.0",
+    "sass": "^1.50.0"
   }
 }
